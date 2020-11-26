@@ -22,9 +22,7 @@ public class Popup extends JFrame implements ActionListener{
 	 */
 	public static void main(String[] args){
 		
-		frame = new JFrame("frame");
-		
-		Popup s = new Popup();
+		frame = new JFrame("popup message");
 		
 		JPanel p = new JPanel();
 		
@@ -36,6 +34,7 @@ public class Popup extends JFrame implements ActionListener{
 		
 		frame.show();
 		
+		
 	}
 	
 	/*
@@ -43,9 +42,16 @@ public class Popup extends JFrame implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent e) {
 		
+		JPanel p = new JPanel();
+		
 		d1 = new JDialog(d, "Popup Message");
 		
 		JLabel l = new JLabel("Data loaded for 2 users in the roster \n1 aditional attendee was found: ");
+		
+		
+		
+		p.add(l);
+		
 		
 		d1.add(l);
 		
