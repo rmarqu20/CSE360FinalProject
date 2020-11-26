@@ -1,6 +1,11 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * This class is used to define the bar
@@ -9,17 +14,23 @@ import javax.swing.JMenuItem;
  */
 public class MainMenuBar extends JMenuBar
 {
+	JMenu fileMenu;
+	JMenuItem loadB;
+	JMenuItem addB;
+	JMenuItem saveB;
+	JMenuItem plotB;
+	JMenu aboutTab;
 	
 	public MainMenuBar()
 	{	
 		//Building menuItems for file menu
-		JMenu fileMenu = new JMenu("File");
-		JMenuItem loadB = new JMenuItem("Load a Roster");
-		JMenuItem addB = new JMenuItem("Add Attendance");
-		JMenuItem saveB = new JMenuItem("Save");
-		JMenuItem plotB = new JMenuItem("Plot Data");
+		fileMenu = new JMenu("File");
+		loadB = new JMenuItem("Load a Roster");
+		addB = new JMenuItem("Add Attendance");
+		saveB = new JMenuItem("Save");
+		plotB = new JMenuItem("Plot Data");
 		
-		JMenu aboutTab = new JMenu("About");
+		aboutTab = new JMenu("About");
 		
 		//Adding items to the file menu
 		fileMenu.add(loadB);
@@ -30,5 +41,16 @@ public class MainMenuBar extends JMenuBar
 		//Adding file and about tabs to menu bar
 		this.add(fileMenu);
 		this.add(aboutTab);
+	}
+	
+	/**
+	 * This function to be used to 
+	 * associate listeners with
+	 * the menu object items
+	 * @param list
+	 */
+	public void addListener(ActionListener list)
+	{
+		loadB.addActionListener(list);
 	}
 }

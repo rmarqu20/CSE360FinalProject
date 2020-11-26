@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class Student 
 {
-	int id;
+	String id;
 	String firstName;
 	String lastName;
 	String program;
@@ -26,7 +26,7 @@ public class Student
 	 * @param lev the student's academic level
 	 * @param asu the student's asurite id
 	 */
-	Student(int newId,String fName,String lName,String prog,String lev,String asu)
+	Student(String newId,String fName,String lName,String prog,String lev,String asu)
 	{
 		id = newId;
 		firstName = fName;
@@ -111,5 +111,17 @@ public class Student
 	public ArrayList <StudentAttendance> getDates()
 	{
 		return dateTimes;
+	}
+	
+	public int getDateTime(Date in)
+	{
+		int timeForDate = 0;
+		int result = dateSearch(in);
+		if(result != -1)
+		{
+			timeForDate = dateTimes.get(result).getTime();
+		}
+		
+		return timeForDate;
 	}
 }
