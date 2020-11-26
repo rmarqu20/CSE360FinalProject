@@ -11,7 +11,7 @@ import javax.swing.*;
  * @author 
  *
  */
-public class Popup extends JFrame implements ActionListner{
+public class Popup extends JFrame implements ActionListener{
 	
 	static JFrame frame;
 	
