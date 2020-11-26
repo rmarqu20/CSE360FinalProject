@@ -28,29 +28,8 @@ public class MainWindow extends JFrame implements ActionListener
 		setTitle("CSE360 Final Project");
 		setSize(800,600);
 		
-		//Main Window Bar
-		JMenuBar menBar = new JMenuBar();
+		MainMenuBar menBar = new MainMenuBar();
 		
-		//Building menuItems for file menu
-		JMenu fileMenu = new JMenu("File");
-		JMenuItem loadB = new JMenuItem("Load a Roster");
-		JMenuItem addB = new JMenuItem("Add Attendance");
-		JMenuItem saveB = new JMenuItem("Save");
-		JMenuItem plotB = new JMenuItem("Plot Data");
-		
-		JMenu aboutTab = new JMenu("About");
-		
-		//Adding items to the file menu
-		fileMenu.add(loadB);
-		fileMenu.add(addB);
-		fileMenu.add(saveB);
-		fileMenu.add(plotB);
-		
-		//Adding file and about tabs to menu bar
-		menBar.add(fileMenu);
-		menBar.add(aboutTab);
-		
-		//Setting main panel
 		JPanel mainPanel = new JPanel();
 		mainPanel.setSize(800,600);
 		mainPanel.add(menBar);

@@ -107,4 +107,9 @@ public class Student
 	{
 		return dateTimes.size();
 	}
+	
+	public ArrayList <StudentAttendance> getDates()
+	{
+		return dateTimes;
+	}
 }
