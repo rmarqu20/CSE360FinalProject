@@ -2,8 +2,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -86,6 +88,21 @@ public class MainWindow extends JFrame implements ActionListener
 		    	//Update datasource using file
 		    	data.create(chooser.getSelectedFile());
 		    }
+		}
+		//About page case
+		else if (menuPushed == "About") {
+			System.out.println("Hit About Menu Pushed");
+			String aboutText = 	"CSE 360\tTuesday 9:00am - 10:15am\n" +
+								"Professor: Javier Gonzalez Sanchez\n\n" +
+								"Richard Marquez Cortes\n" +
+								"Agustin Gomez Arroyo\n" +
+								"Anoop Makam\n" +
+								"Gerik Swenson\n" +
+								"August Fowler\n\n";
+			JLabel aboutTextLabel = new JLabel(aboutText);
+			JDialog aboutDialog = new JDialog(this, "About");
+			aboutDialog.add(aboutTextLabel);
+			aboutDialog.setVisible(true);
 		}
 		
 	}

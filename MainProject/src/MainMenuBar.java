@@ -30,6 +30,7 @@ public class MainMenuBar extends JMenuBar
 		saveB = new JMenuItem("Save");
 		plotB = new JMenuItem("Plot Data");
 		
+		//add About page to MainMenuBar
 		aboutTab = new JMenu("About");
 		
 		//Adding items to the file menu
@@ -52,5 +53,6 @@ public class MainMenuBar extends JMenuBar
 	public void addListener(ActionListener list)
 	{
 		loadB.addActionListener(list);
+		aboutTab.addActionListener(list);
 	}
 }
