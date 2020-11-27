@@ -1,6 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -69,7 +69,7 @@ public class MainWindow extends JFrame implements ActionListener
 		String menuPushed = ((JMenuItem)eve.getSource()).getText();
 		
 		//Loading the roster case
-		if(menuPushed == "Load a Roster")
+		if(menuPushed == "Load a Roster" || menuPushed == "Add Attendance")
 		{
 			//Spawn file chooser
 			JFileChooser chooser = new JFileChooser();
@@ -83,10 +83,21 @@ public class MainWindow extends JFrame implements ActionListener
 		    //If a file is chosen
 		    if(returnVal == JFileChooser.APPROVE_OPTION) 
 		    {
-		    	//Update datasource using file
-		    	data.create(chooser.getSelectedFile());
+		    	File fileChoose = chooser.getSelectedFile();
+		    	
+		    	if(menuPushed == "Load a Roster")
+				{
+		    		//Update datasource using file
+			    	data.create(fileChoose);
+				}
+		    	else
+		    	{
+		    		
+		    	}
 		    }
 		}
+		
+		
 		
 	}
 }

@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 
@@ -80,6 +81,33 @@ public class DataSource extends Observable
 		//Notifying changes
 		setChanged();
 		notifyObservers();
+		
+	}
+	
+	public void addAttendance(File inFile, Date nDate)
+	{
+		//List to hold info from file
+		ArrayList<List<String>> unparsedStud = new ArrayList<>();
+	
+		try(BufferedReader buff = new BufferedReader(new FileReader(inFile)))
+		{
+			//Moving through file line by line
+			String currentLine;
+			while((currentLine = buff.readLine()) != null)
+			{
+				String[] parts = currentLine.split(",");
+				unparsedStud.add(Arrays.asList(parts));
+			}
+		} 
+		catch (FileNotFoundException e)
+		{	
+			e.printStackTrace();
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
