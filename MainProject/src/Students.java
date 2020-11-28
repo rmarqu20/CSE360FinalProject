@@ -105,6 +105,14 @@ public class Students
 		}
 	}
 	
+	public void addUniqueDate(Date uDate)
+	{
+		if(!dates.contains(uDate))
+		{
+			dates.add(uDate);
+		}
+	}
+	
 	/**
 	 * Accessor method for count of rows
 	 * @return the number of rows

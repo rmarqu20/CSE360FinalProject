@@ -2,6 +2,7 @@ import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  * This class to be used as a scroll pane
@@ -10,10 +11,10 @@ import javax.swing.JScrollPane;
  * @author 
  *
  */
-public class TablePane extends JScrollPane implements Observer
+public class TablePane implements Observer
 {
 	StudentTable studtable;
-	
+	JScrollPane pane;
 	/**
 	 * This function to be used as a constructor
 	 * which initializes data and sets size vars
@@ -21,8 +22,14 @@ public class TablePane extends JScrollPane implements Observer
 	public TablePane()
 	{
 		studtable = new StudentTable();
-		this.setViewportView(studtable.getTable());
-		this.setPreferredSize(new Dimension (750,300));
+		pane = new JScrollPane();
+		JTable tab = studtable.getTable();
+		tab.getTableHeader().setReorderingAllowed(false);
+		pane.setViewportView(tab);
+		pane.setHorizontalScrollBarPolicy(
+	    JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		pane.setVerticalScrollBarPolicy(
+	    JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 	}
 	
 	/**

@@ -2,7 +2,12 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 /**
  * This class to be used to generate a table based
@@ -21,9 +26,13 @@ public class StudentTable
 	StudentTable()
 	{
 		studentInfo = new Students();
-		table = new JTable();
-		table.setPreferredSize(new Dimension(800,400));
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table = new JTable()
+		{
+			 public boolean getScrollableTracksViewportWidth() 
+			 {
+				   return getPreferredSize().width < getParent().getWidth();
+			 }
+		};
 	}
 	
 	/**
@@ -75,7 +84,9 @@ public class StudentTable
 			}
 		}
 		currentModel.setRowCount(0);
+		currentModel.setColumnCount(0);
 		currentModel.setDataVector(data, columns);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 	
 	/**
@@ -85,7 +96,6 @@ public class StudentTable
 	 */
 	public void updateInfo(Students newInf)
 	{
-		System.out.println(newInf.rowCount());
 		studentInfo = newInf;
 		generateTable();
 	}

@@ -18,8 +18,8 @@ import java.util.Observable;
  */
 public class DataSource extends Observable 
 {
-	public Students studData;
-	
+	Students studData;
+	Students notFound;
 	/**
 	 * This method is the constructor for
 	 * the data source, initializing the
@@ -28,6 +28,7 @@ public class DataSource extends Observable
 	public DataSource()
 	{
 		studData = new Students();
+		notFound = new Students();
 	}
 	
 	/**
@@ -86,6 +87,8 @@ public class DataSource extends Observable
 	
 	public void addAttendance(File inFile, Date nDate)
 	{
+		notFound.clearStudents();
+		
 		//List to hold info from file
 		ArrayList<List<String>> unparsedStud = new ArrayList<>();
 	
@@ -108,6 +111,44 @@ public class DataSource extends Observable
 			e.printStackTrace();
 		}
 		
+		if(unparsedStud.get(0).size() != 2)
+		{
+			return;
+		}
+		else
+		{
+			for(int i= 0; i<unparsedStud.size();i++)
+			{
+				String id = unparsedStud.get(i).get(0);
+				String time = unparsedStud.get(i).get(1);
+				StudentAttendance att = new StudentAttendance(Integer.parseInt(time),nDate);
+				int search = studData.findStudent(id);
+				System.out.println(search);
+				
+				if(search == -1)
+				{
+					int misSearch = notFound.findStudent(id);
+					if(misSearch == -1)
+					{
+						Student missingStudent = new Student("","","","","",id);	
+						notFound.addStudent(missingStudent);
+						notFound.addStudentAttendance(att, notFound.getStudents().size() - 1);
+					}
+					else
+					{
+						notFound.addStudentAttendance(att, misSearch);
+					}
+					
+				}
+				else
+				{
+					studData.addStudentAttendance(att, search);
+				}
+			}
+		}
+		
+		setChanged();
+		notifyObservers();
 		
 	}
 	
@@ -119,5 +160,10 @@ public class DataSource extends Observable
 	public Students getData()
 	{
 		return studData;
+	}
+	
+	public Students getMis()
+	{
+		return notFound;
 	}
 }
