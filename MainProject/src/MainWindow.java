@@ -99,19 +99,22 @@ public class MainWindow extends JFrame implements ActionListener
 		    }
 		}
 		//About page case
-		else if (menuPushed == "About") {
-			System.out.println("Hit About Menu Pushed");
-			String aboutText = 	"CSE 360\tTuesday 9:00am - 10:15am\n" +
-								"Professor: Javier Gonzalez Sanchez\n\n" +
-								"Richard Marquez Cortes\n" +
-								"Agustin Gomez Arroyo\n" +
-								"Anoop Makam\n" +
-								"Gerik Swenson\n" +
-								"August Fowler\n\n";
-			JLabel aboutTextLabel = new JLabel(aboutText);
-			JDialog aboutDialog = new JDialog(this, "About");
-			aboutDialog.add(aboutTextLabel);
-			aboutDialog.setVisible(true);
+		else if (menuPushed == "About") 
+		{
+			String aboutText = 	"<html>CSE 360    Tuesday 9:00am - 10:15am<br>" +
+								"Professor: Javier Gonzalez Sanchez<br><br>" +
+								"Richard Marquez Cortes<br>" +
+								"Agustin Gomez Arroyo<br>" +
+								"Anoop Makam<br>" +
+								"Gerik Swenson<br>" +
+								"August Fowler<br><br></html>";
+			
+			JLabel aboutInfo = new JLabel(aboutText);
+			JDialog aboutDialog = new JDialog();
+			aboutDialog.add(aboutInfo);
+			aboutDialog.setSize(250,200);
+			aboutDialog.setLocation(this.getX() + 300,this.getY() + 200);
+			aboutDialog.show();
 		}
 		
 		
