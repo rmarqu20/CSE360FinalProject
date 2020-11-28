@@ -42,6 +42,7 @@ public class StudentTable
 	 */
 	public void generateTable()
 	{
+		String[] months = {"Jan","Feb", "Mar", "Apr", "May","Jun","Jul","Aug","Sep", "Oct", "Nov","Dec"};
 		String[] columns = new String[studentInfo.colCount()];
 		ArrayList <Date> dates = studentInfo.getDates();
 		DefaultTableModel currentModel = (DefaultTableModel) table.getModel();
@@ -59,7 +60,14 @@ public class StudentTable
 		{	 
 			 for(int i = 0; i < dates.size(); i++)
 			 {
-				 columns [6 + i] = dates.get(i).toString();
+				 String fmtDat;
+				 Date dat = dates.get(i);
+				 String monthFmt = months[dat.getMonth() - 1];
+				 String dayFmt = Integer.toString(dat.getDay());
+				 
+				 fmtDat = monthFmt + " " + dayFmt;
+				 
+				 columns [6 + i] = fmtDat;
 			 }
 		}
 		

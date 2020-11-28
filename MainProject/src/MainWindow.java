@@ -114,13 +114,17 @@ public class MainWindow extends JFrame implements ActionListener
 		//About page case
 		else if (menuPushed == "About") 
 		{
-			String aboutText = 	"<html>CSE 360 Tuesday 9:00am - 10:15am<br>" +
-								"Professor: Javier Gonzalez Sanchez<br><br>" +
-								"Richard Marquez Cortes<br>" +
-								"Agustin Gomez Arroyo<br>" +
-								"Anoop Makam<br>" +
-								"Gerik Swenson<br>" +
-								"August Fowler<br><br></html>";
+			String aboutText = 	"<html><head><style>"+
+                    "h3 {text-align: center;}" +
+                    "p {text-align: center;}" +
+                    "</head></style><body>" +
+                                "<p><h3>CSE 360    Tuesday 9:00am - 10:15am<br></h3>" +
+                                "Professor: Javier Gonzalez Sanchez<br><br>" +
+                                "Richard Marquez Cortes<br>" +
+                                "Agustin Gomez Arroyo<br>" +
+                                "Anoop Makam<br>" +
+                                "Gerik Swenson<br>" +
+                                "August Fowler<br><br></p></body></html>";
 			
 			JLabel aboutInfo = new JLabel(aboutText);
 			JDialog aboutDialog = new JDialog();
