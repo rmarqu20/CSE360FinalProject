@@ -55,5 +55,6 @@ public class MainMenuBar extends JMenuBar
 		loadB.addActionListener(list);
 		aboutTab.addActionListener(list);
 		addB.addActionListener(list);
+		saveB.addActionListener(list);
 	}
 }

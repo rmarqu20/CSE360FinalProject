@@ -14,6 +14,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.jdatepicker.*;
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -30,6 +31,7 @@ import org.jdatepicker.impl.UtilDateModel;
 public class MainWindow extends JFrame implements ActionListener
 {
 	DataSource data;
+	JTable table;
 	/**
 	 * This is the constructor for the main window
 	 * creating a menu, handling object sizes and 
@@ -54,6 +56,7 @@ public class MainWindow extends JFrame implements ActionListener
 		data.addObserver(tab);
 		data.addObserver(plot);
 		JTabbedPane tabs = new JTabbedPane(JTabbedPane.TOP);
+		table = tab.studtable.table;
 		tabs.addTab("Table", tab.pane);
 		
 		tabs.addTab("Data Plot",plot);
@@ -83,14 +86,16 @@ public class MainWindow extends JFrame implements ActionListener
 	{
 		//Determining which button was pushed
 		String menuPushed = ((JMenuItem)eve.getSource()).getText();
+		
+		//Spawn file chooser
+	
+		DatePickerFrame dateChoose;
+		
 		//Loading the roster case
 		if(menuPushed == "Load a Roster" || menuPushed == "Add Attendance")
 		{
-			//Spawn file chooser
-			JFileChooser chooser = new JFileChooser();
-			DatePickerFrame dateChoose;
 			File fileChoose = null;
-			
+			JFileChooser chooser = new JFileChooser();
 			//Adding filter to file choices
 			FileNameExtensionFilter filter = new FileNameExtensionFilter
 			("Comma Separated Value Files","csv");
@@ -139,6 +144,19 @@ public class MainWindow extends JFrame implements ActionListener
 			aboutDialog.setSize(250,200);
 			aboutDialog.setLocation(this.getX() + 300,this.getY() + 200);
 			aboutDialog.show();
+		}
+		else if(menuPushed == "Save")
+		{
+			 JFileChooser chooser = new JFileChooser();
+			 int retrival = chooser.showSaveDialog(null);
+			 if (retrival == JFileChooser.APPROVE_OPTION) {
+		        try {
+		            File fileChoose = chooser.getSelectedFile();
+		            SaveTable sav= new SaveTable(table,fileChoose);
+		        } catch (Exception ex) {
+		            ex.printStackTrace();
+		        }
+			    }
 		}
 	}
 }

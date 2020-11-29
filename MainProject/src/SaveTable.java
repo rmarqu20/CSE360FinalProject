@@ -7,10 +7,12 @@ import javax.swing.table.*;
 
 
 
-public class SaveTable {
+public class SaveTable 
+{
 	
 	
-	public void SaveTable(JTable table, File file) throws IOException {
+	public SaveTable(JTable table, File file) throws IOException 
+	{
 		TableModel stdTable = table.getModel();
 		FileWriter out = new FileWriter(file);
 		
@@ -30,15 +32,7 @@ public class SaveTable {
 		}
 		out.close();
 		
-		System.out.println("output:" + file);
-		
-		
-		
-	}
-	
-		
-	 
-		
-	
+		System.out.println("output:" + file);	
+	}	
 
 }
