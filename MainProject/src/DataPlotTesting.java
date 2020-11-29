@@ -73,7 +73,7 @@ public class DataPlotTesting extends JFrame {
   
   public static void main(String[] args) {  
     SwingUtilities.invokeLater(() -> {  
-      DataPlotTesting example = new DataPlotTesting("Scatter Chart Example");  
+      DataPlotTesting example = new DataPlotTesting("Class Attendence By Date");  
       example.setSize(800, 400);  
       example.setLocationRelativeTo(null);  
       example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  
