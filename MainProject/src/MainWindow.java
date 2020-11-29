@@ -13,6 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.jdatepicker.*;
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -48,12 +49,18 @@ public class MainWindow extends JFrame implements ActionListener
 		
 		//Associating table with data source
 		TablePane tab = new TablePane();
+		DataPlot plot = new DataPlot();
+
 		data.addObserver(tab);
+		data.addObserver(plot);
+		JTabbedPane tabs = new JTabbedPane(JTabbedPane.TOP);
+		tabs.addTab("Table", tab.pane);
 		
+		tabs.addTab("Data Plot",plot);
 		//Adding objects to main panel
 		mainPanel.setSize(800,600);
 		mainPanel.add(menBar);
-		mainPanel.add(tab.pane);
+		mainPanel.add(tabs);
 		
 		//Adding mainPanel to the main window frame
 		getContentPane().add(mainPanel);

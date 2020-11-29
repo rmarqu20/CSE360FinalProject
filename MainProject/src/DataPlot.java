@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import org.jfree.chart.ChartFactory;
@@ -16,7 +17,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 
-public abstract class DataPlot extends JFrame implements Observer
+public class DataPlot extends JPanel implements Observer
 {
 	Students stud;
 	/**
@@ -33,7 +34,8 @@ public abstract class DataPlot extends JFrame implements Observer
 		plot.setBackgroundPaint(new Color(0,0,0));
 		//create panel
 		ChartPanel panel = new ChartPanel(chart);
-		setContentPane(panel);
+		this.removeAll();
+		this.add(panel);
 	}
 	/**
 	 * This class uses other methods to pull percent and dates 
@@ -42,6 +44,7 @@ public abstract class DataPlot extends JFrame implements Observer
 	 */
 	private XYDataset createDataset() 
 	{
+		
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		
 		ArrayList<Student> studList = stud.getStudents();
@@ -151,5 +154,6 @@ public abstract class DataPlot extends JFrame implements Observer
 	public void update(Observable obs, Object arg) 
 	{
 		stud = ((DataSource)obs).getData();
+		ScatterPlot();
 	}
 }
