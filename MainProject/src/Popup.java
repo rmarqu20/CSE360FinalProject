@@ -3,6 +3,10 @@
  */
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.*;
 
 
@@ -11,55 +15,51 @@ import javax.swing.*;
  * @author 
  *
  */
-public class Popup extends JFrame implements ActionListener{
+public class Popup implements Observer {
 	
-	static JFrame frame;
+	Students stud;
+	Students found;
 	
-	static JDialog d, d1;
-	
-	/*
-	 * 
-	 */
-	public static void main(String[] args){
+	Popup()
+	{
 		
-		frame = new JFrame("popup message");
+		String list;
+		ArrayList<Student> info = stud.getStudents();
+		for(int i = 0; i < info.size(); i++)
+		{
+			list = 
+		}
 		
-		JPanel p = new JPanel();
+			String aboutText = 	"<html><head><style>"+
+	                "h3 {text-align: center;}" +
+	                "p {text-align: center;}" +
+	                "</head></style><body>" +
+	                            "<p><h3>CSE 360    Tuesday 9:00am - 10:15am<br></h3>" +
+	                            "Professor: Javier Gonzalez Sanchez<br><br>" +
+	                            "Richard Marquez Cortes<br>" +
+	                            "Agustin Gomez Arroyo<br>" +
+	                            "Anoop Makam<br>" +
+	                            "Gerik Swenson<br>" +
+	                            "August Fowler<br><br></p></body></html>";
 		
-		frame.add(p);
-		
-		frame.setSize(350, 350);
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		frame.show();
-		
-		
+		JLabel aboutInfo = new JLabel(aboutText,SwingConstants.CENTER);
+		JDialog aboutDialog = new JDialog();
+		aboutDialog.add(aboutInfo);
+		aboutDialog.setSize(275,200);
+		aboutDialog.setLocation(this.getX() + 300,this.getY() + 200);
+		aboutDialog.show();
 	}
 	
+	
 	/*
 	 * 
 	 */
-	public void actionPerformed(ActionEvent e) {
-		
-		JPanel p = new JPanel();
-		
-		d1 = new JDialog(d, "Popup Message");
-		
-		JLabel l = new JLabel("Data loaded for 2 users in the roster \n1 aditional attendee was found: ");
-		
-		
-		
-		p.add(l);
-		
-		
-		d1.add(l);
-		
-		d1.setSize(200, 200);
-		
-		d1.setLocation(200, 200);
-		
-		d1.setVisible(true);
+	
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		stud = ((DataSource)o).getMis();
+		found = ((DataSource)o).getData();
 		
 	}
 	
