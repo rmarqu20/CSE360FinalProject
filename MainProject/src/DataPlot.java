@@ -31,7 +31,7 @@ public class DataPlot extends JPanel implements Observer
 				"Attendance Data per Student","% Attendance","Amount of Students",dataset);
 		//create plot
 		XYPlot plot = (XYPlot)chart.getPlot(); 
-		plot.setBackgroundPaint(new Color(0,0,0));
+		plot.setBackgroundPaint(new Color(211,211,211));
 		//create panel
 		ChartPanel panel = new ChartPanel(chart);
 		this.removeAll();
@@ -58,14 +58,19 @@ public class DataPlot extends JPanel implements Observer
 		int[][] percDate = makePercChart(studList);
 		int[][] perc30Date = getCount(percDate);
 		
+		int test = 0;
+		
 		for(int i = 0; i < datesSize; i++) //iterate dates
 		{
 			arrSeries.add(new XYSeries(prettyString(dates.get(i))));
-			
-			for(int j = 0; j < 100; j++) //iterate through %
+			tempSeries = arrSeries.get(i);
+			//iterate through students to see freq of %
+			for(int j = 0; j < studList.size(); j++) 
 			{
-				tempSeries = arrSeries.get(i);
-				tempSeries.add(j,perc30Date[i][j]);			//add in % at date
+				test = perc30Date[i][j];
+				tempSeries.add(j,test + 5);			//add in % at date
+				System.out.println("Perc: " + perc30Date[i][j]);
+				System.out.println("Perc: " + perc30Date[i][j] + 5);
 			}
 			dataset.addSeries(tempSeries); //add series to graph
 		}
@@ -81,9 +86,10 @@ public class DataPlot extends JPanel implements Observer
 	{
 		String day = Integer.toString(i.getDay());
 		//array of months based on number passed in
-		String[] months = {"Jan","Feb", "Mar", "Apr", "May","Jun","Jul","Aug","Sep", "Oct", "Nov","Dec"}; 
+		String[] months = {"Jan","Feb", "Mar", "Apr", "May","Jun",
+				"Jul","Aug","Sep", "Oct", "Nov","Dec"}; 
 		
-		return months[i.getMonth() -1] + day;	
+		return months[i.getMonth() - 1] + " " + day;	
 	}
 	
 	
