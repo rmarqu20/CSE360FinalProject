@@ -21,6 +21,7 @@ public class DataSource extends Observable
 	Students studData;
 	Students notFound;
 	boolean showPlot;
+	int foundStuds;
 	/**
 	 * This method is the constructor for
 	 * the data source, initializing the
@@ -30,6 +31,7 @@ public class DataSource extends Observable
 	{
 		studData = new Students();
 		notFound = new Students();
+		foundStuds = 0; 
 	}
 	
 	/**
@@ -150,6 +152,7 @@ public class DataSource extends Observable
 				else
 				{
 					studData.addStudentAttendance(att, search);
+					foundStuds ++;
 				}
 			}
 		}

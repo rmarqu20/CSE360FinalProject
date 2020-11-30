@@ -4,11 +4,16 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -52,6 +57,43 @@ public class DatePickerFrame extends JFrame implements ActionListener
 		{
 			Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
 			rep.addAttendance(toParse,date);
+			
+			JDialog aboutDialog = new JDialog();
+    		
+    		String msg = "Data loaded for " + 
+    		Integer.toString(rep.foundStuds) + " users in the roster.";
+    		JLabel lab1 = new JLabel(msg,SwingConstants.CENTER);
+    		ArrayList<Student> list = rep.notFound.getStudents();
+    		
+    		String line2 = Integer.toString(list.size());
+    		line2 += " additional attendees were found:";
+    		JLabel lab2 = new JLabel(line2,SwingConstants.CENTER);
+    		
+    		GridLayout grid = new GridLayout(2 + list.size(),1);
+    		JPanel panel = new JPanel(grid);
+    		
+    		panel.add(lab1);
+    		panel.add(lab2);
+    		
+    		if(list.size() > 0)
+    		{
+    			for(int i = 0; i<list.size();i++)
+    			{
+    				String studMess = list.get(i).getASU();
+    				
+    				studMess += ", connected for " + Integer.toString(list.get(i).getDateTime(date));
+    				studMess += " minute";
+    				JLabel newLab = new JLabel(studMess,SwingConstants.CENTER);
+    				panel.add(newLab);
+    			}
+    		}
+    		
+    		
+    		aboutDialog.add(panel);
+    		aboutDialog.setLocation(this.getX(),this.getY());
+			aboutDialog.pack();
+			aboutDialog.setSize(aboutDialog.getSize().width + 30,aboutDialog.getSize().height + 30 );
+			aboutDialog.show();
 		}
 		catch (ParseException e) 
 		{
