@@ -58,19 +58,17 @@ public class DataPlot extends JPanel implements Observer
 		int[][] percDate = makePercChart(studList);
 		int[][] perc30Date = getCount(percDate);
 		
-		int test = 0;
-		
 		for(int i = 0; i < datesSize; i++) //iterate dates
 		{
 			arrSeries.add(new XYSeries(prettyString(dates.get(i))));
 			tempSeries = arrSeries.get(i);
 			//iterate through students to see freq of %
-			for(int j = 0; j < studList.size(); j++) 
+			for(int j = 0; j <= 100; j++) 
 			{
-				test = perc30Date[i][j];
-				tempSeries.add(j,test + 5);			//add in % at date
-				System.out.println("Perc: " + perc30Date[i][j]);
-				System.out.println("Perc: " + perc30Date[i][j] + 5);
+				if(perc30Date[j][i] != 0)
+				{
+					tempSeries.add(j,perc30Date[j][i]);			//add in % at date
+				}
 			}
 			dataset.addSeries(tempSeries); //add series to graph
 		}
@@ -95,12 +93,15 @@ public class DataPlot extends JPanel implements Observer
 	
 	public double getPercent(int time)
 	{
-		double perc = time/75; //attendance out of 75 min
+		System.out.println("time test: " + time);
+		double perc = ((double)time)/75; //attendance out of 75 min
+		System.out.println("perc test: " + perc);
 		if(perc >= 1.0) //if student has over time
 		{
 			perc = 1;
 		}
 		perc *= 100; //multiply by 100 for %
+		System.out.println("percent test: " + perc);
 		return perc;
 	}
 	/**
@@ -119,6 +120,7 @@ public class DataPlot extends JPanel implements Observer
 			for(int j = 0; j < studList.size(); j++) //iterates through students
 			{
 				double perc = getPercent(studList.get(j).getDateTime(dates.get(i))); //create percent for student at date		
+				//System.out.println("double perc test: " + perc);
 				twoD_arr[j][i] = (int)perc; //add percent to 2d array
 			}			
 		}	
@@ -135,17 +137,17 @@ public class DataPlot extends JPanel implements Observer
 	{
 		ArrayList<Student> studList = stud.getStudents();
 		ArrayList<Date> dates = stud.getDates();
-		int[][] counts = new int[dates.size()][100];
+		int[][] counts = new int[101][dates.size()];
 		
 		for(int i = 0; i < dates.size(); i++) //iterate through all dates
 		{
-			for(int j = 0; j < 100; j++) //look for every possible %
+			for(int j = 0; j <= 100; j++) //look for every possible %
 			{
 				for(int k = 0; k < studList.size();k++) //iterate through all students
 				{
-					if((j + 1) == twoD_arr[k][i]) //if match
+					if(j == twoD_arr[k][i]) //if match
 					{
-						counts[i][j] += 1; //increase count for a %
+						counts[j][i] += 1; //increase count for a %
 					}
 				}				 
 			}			
