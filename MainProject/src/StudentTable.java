@@ -62,8 +62,8 @@ public class StudentTable
 			 {
 				 String fmtDat;
 				 Date dat = dates.get(i);
-				 String monthFmt = months[dat.getMonth() - 1];
-				 String dayFmt = Integer.toString(dat.getDay());
+				 String monthFmt = months[dat.getMonth()];
+				 String dayFmt = Integer.toString(dat.getDate());
 				 
 				 fmtDat = monthFmt + " " + dayFmt;
 				 

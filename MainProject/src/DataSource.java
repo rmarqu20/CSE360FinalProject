@@ -20,6 +20,7 @@ public class DataSource extends Observable
 {
 	Students studData;
 	Students notFound;
+	boolean showPlot;
 	/**
 	 * This method is the constructor for
 	 * the data source, initializing the
@@ -63,6 +64,11 @@ public class DataSource extends Observable
 			e.printStackTrace();
 		}
 		
+		if(unparsedStud.get(0).size() != 6)
+		{
+			return;
+		}
+		
 		//Adding Student objects to list using
 		//unparsed list
 		for(int i= 0; i<unparsedStud.size();i++)
@@ -79,6 +85,7 @@ public class DataSource extends Observable
 			studData.addStudent(toAdd);
 		}
 		
+		showPlot = false;
 		//Notifying changes
 		setChanged();
 		notifyObservers();
@@ -147,11 +154,24 @@ public class DataSource extends Observable
 			}
 		}
 		
+		showPlot = false;
 		setChanged();
 		notifyObservers();
 		
 	}
 	
+	public void showPlot()
+	{
+		showPlot = true;
+		setChanged();
+		notifyObservers();
+	}
+	
+	public boolean getPlot()
+	{
+		return showPlot;
+	}
+
 	/**
 	 * Simple accessor method for 
 	 * retrieving student list

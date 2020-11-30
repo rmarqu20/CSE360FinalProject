@@ -82,12 +82,12 @@ public class DataPlot extends JPanel implements Observer
 	@SuppressWarnings("deprecation")
 	public String prettyString(Date i)
 	{
-		String day = Integer.toString(i.getDay());
+		String day = Integer.toString(i.getDate());
 		//array of months based on number passed in
 		String[] months = {"Jan","Feb", "Mar", "Apr", "May","Jun",
 				"Jul","Aug","Sep", "Oct", "Nov","Dec"}; 
 		
-		return months[i.getMonth() - 1] + " " + day;	
+		return months[i.getMonth()] + " " + day;	
 	}
 	
 	
@@ -162,6 +162,10 @@ public class DataPlot extends JPanel implements Observer
 	public void update(Observable obs, Object arg) 
 	{
 		stud = ((DataSource)obs).getData();
-		ScatterPlot();
+
+		if(((DataSource)obs).getPlot())
+		{
+			ScatterPlot();
+		}
 	}
 }

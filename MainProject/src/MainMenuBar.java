@@ -56,5 +56,6 @@ public class MainMenuBar extends JMenuBar
 		aboutTab.addActionListener(list);
 		addB.addActionListener(list);
 		saveB.addActionListener(list);
+		plotB.addActionListener(list);
 	}
 }

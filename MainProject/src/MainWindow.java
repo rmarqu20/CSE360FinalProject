@@ -15,6 +15,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.jdatepicker.*;
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -138,13 +139,14 @@ public class MainWindow extends JFrame implements ActionListener
                                 "Gerik Swenson<br>" +
                                 "August Fowler<br><br></p></body></html>";
 			
-			JLabel aboutInfo = new JLabel(aboutText);
+			JLabel aboutInfo = new JLabel(aboutText,SwingConstants.CENTER);
 			JDialog aboutDialog = new JDialog();
 			aboutDialog.add(aboutInfo);
-			aboutDialog.setSize(250,200);
+			aboutDialog.setSize(275,200);
 			aboutDialog.setLocation(this.getX() + 300,this.getY() + 200);
 			aboutDialog.show();
 		}
+		
 		else if(menuPushed == "Save")
 		{
 			 JFileChooser chooser = new JFileChooser();
@@ -157,6 +159,11 @@ public class MainWindow extends JFrame implements ActionListener
 		            ex.printStackTrace();
 		        }
 			    }
+		}
+		
+		else if(menuPushed == "Plot Data")
+		{
+			data.showPlot();
 		}
 	}
 }
