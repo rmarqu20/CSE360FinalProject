@@ -5,8 +5,11 @@ import java.util.Date;
  * This class is to be used as collection of student objects
  * as well as the unique dates associated with each collection
  * Functions to modify data also included
- * @author 
- *
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
  */
 public class Students 
 {

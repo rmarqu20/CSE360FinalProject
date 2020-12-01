@@ -8,8 +8,11 @@ import javax.swing.JTable;
  * This class to be used as a scroll pane
  * for holding the Jtable as well as acting
  * as an observer of data
- * @author 
- *
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
  */
 public class TablePane implements Observer
 {

@@ -11,12 +11,22 @@ import javax.swing.WindowConstants;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-
+/**
+ * This class to be used to generate a scatter plot
+ * using student attendance information
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
+ */
 public class DataPlot extends JPanel implements Observer
 {
 	Students stud;
@@ -32,6 +42,14 @@ public class DataPlot extends JPanel implements Observer
 		//create plot
 		XYPlot plot = (XYPlot)chart.getPlot(); 
 		plot.setBackgroundPaint(new Color(211,211,211));
+		NumberAxis domain = (NumberAxis) plot.getDomainAxis();
+		domain.setRange(0, 100);
+		
+		NumberAxis range = (NumberAxis) plot.getRangeAxis();
+		ArrayList<Student> studList = stud.getStudents();
+		int yRange = studList.size();
+		range.setRange(0, yRange);
+		
 		//create panel
 		ChartPanel panel = new ChartPanel(chart);
 		this.removeAll();
@@ -93,15 +111,12 @@ public class DataPlot extends JPanel implements Observer
 	
 	public double getPercent(int time)
 	{
-		System.out.println("time test: " + time);
 		double perc = ((double)time)/75; //attendance out of 75 min
-		System.out.println("perc test: " + perc);
 		if(perc >= 1.0) //if student has over time
 		{
 			perc = 1;
 		}
 		perc *= 100; //multiply by 100 for %
-		System.out.println("percent test: " + perc);
 		return perc;
 	}
 	/**

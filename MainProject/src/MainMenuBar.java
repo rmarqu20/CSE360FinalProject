@@ -11,6 +11,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * This class is used to define the bar
  * for the main Window, containing
  * buttons for different actions
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
  */
 public class MainMenuBar extends JMenuBar
 {
@@ -20,7 +25,10 @@ public class MainMenuBar extends JMenuBar
 	JMenuItem saveB;
 	JMenuItem plotB;
 	JMenuItem aboutTab;
-	
+	/**
+	 * This function sets up the main 
+	 * menu bar with all its functionalities
+	 */
 	public MainMenuBar()
 	{	
 		//Building menuItems for file menu
@@ -48,7 +56,7 @@ public class MainMenuBar extends JMenuBar
 	 * This function to be used to 
 	 * associate listeners with
 	 * the menu object items
-	 * @param list
+	 * @param list list of action listeners
 	 */
 	public void addListener(ActionListener list)
 	{

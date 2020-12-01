@@ -12,6 +12,11 @@ import javax.swing.table.TableColumnModel;
 /**
  * This class to be used to generate a table based
  * the current student info
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
  */
 public class StudentTable
 {	

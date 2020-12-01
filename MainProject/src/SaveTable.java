@@ -6,19 +6,21 @@ import java.util.Observer;
 import javax.swing.*;
 import javax.swing.table.*;
 
-
-
-
+/**
+ * This class to be used to save the currently
+ * loaded attendance and dates into a csv file
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
+ */
 public class SaveTable
 {
-	
-	
 	public SaveTable(JTable table, File file) throws IOException 
 	{
 		
 		try {
-			
-		
 				TableModel stdTable = table.getModel();
 				System.out.println(stdTable.getColumnCount() + " " + stdTable.getRowCount() );
 				FileWriter out = new FileWriter(file);
@@ -35,17 +37,11 @@ public class SaveTable
 						
 						out.write(stdTable.getValueAt(i,j).toString() + ",");
 					}
-					out.write("\n");
-					
-					
+					out.write("\n");	
 				}
 				out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		
+		}		
 	}
-
-	
 }

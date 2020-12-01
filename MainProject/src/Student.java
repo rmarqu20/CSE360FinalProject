@@ -5,8 +5,11 @@ import java.util.Date;
  * This class to be used for each student listing on the roster.
  * It contains the class definitions and methods for modifying
  * each student and all of the student's fields 
- * @author 
- *
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
  */
 public class Student 
 {

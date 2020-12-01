@@ -3,6 +3,11 @@ import java.util.Date;
 /**
  * This class holds a studentAttendance record containing 
  * a date and an associated attendance time
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
  */
 public class StudentAttendance 
 {

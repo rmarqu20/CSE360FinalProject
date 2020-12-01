@@ -13,8 +13,11 @@ import java.util.Observable;
  * This class is to be used as the data source
  * which will generate observable data that can
  * change based on user actions.
- * @author 
- *
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
  */
 public class DataSource extends Observable 
 {
@@ -32,8 +35,7 @@ public class DataSource extends Observable
 		studData = new Students();
 		notFound = new Students();
 		foundStuds = 0; 
-	}
-	
+	}	
 	/**
 	 * This function will parse through
 	 * a csv file and add to the student
@@ -93,7 +95,12 @@ public class DataSource extends Observable
 		notifyObservers();
 		
 	}
-	
+	/**
+	 * This function adds attendance for every student 
+	 * and notifies the observers of changes
+	 * @param inFile file to be read
+	 * @param nDate date for attendance
+	 */
 	public void addAttendance(File inFile, Date nDate)
 	{
 		notFound.clearStudents();
@@ -162,14 +169,20 @@ public class DataSource extends Observable
 		notifyObservers();
 		
 	}
-	
+	/**
+	 * This function sets showPlot to true 
+	 * making the plot show up
+	 */
 	public void showPlot()
 	{
 		showPlot = true;
 		setChanged();
 		notifyObservers();
 	}
-	
+	/**
+	 * This function gets the plot
+	 * @return plot
+	 */
 	public boolean getPlot()
 	{
 		return showPlot;
@@ -184,7 +197,11 @@ public class DataSource extends Observable
 	{
 		return studData;
 	}
-	
+	/**
+	 * This function retrieves 
+	 * the student's notFound status 
+	 * @return whether the student was found
+	 */
 	public Students getMis()
 	{
 		return notFound;

@@ -27,8 +27,11 @@ import org.jdatepicker.impl.UtilDateModel;
  * This class will be utilized to create the main window of the 
  * application. This window will serve as a way for the user
  * to interact with the student roster through the use of a menu.
- * @author 
- *
+ * @author Agustin Gomez Arroyo
+ * @author Anoop Makam
+ * @author August Fowler
+ * @author Gerik Swenson
+ * @author Richard Marquez Cortes 
  */
 public class MainWindow extends JFrame implements ActionListener
 {
@@ -71,14 +74,17 @@ public class MainWindow extends JFrame implements ActionListener
 		getContentPane().add(mainPanel);
 		this.setJMenuBar(menBar);
 	}
-	
+	/**
+	 * This is the main function for the 
+	 * project
+	 * @param args arguments being passed in
+	 */
 	public static void main(String[] args)
 	{
 		MainWindow window = new MainWindow();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
 	}
-	
 	/**
 	 * This function to be used as
 	 * a reaction to button presses
@@ -168,5 +174,3 @@ public class MainWindow extends JFrame implements ActionListener
 		}
 	}
 }
-
-
