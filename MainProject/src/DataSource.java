@@ -104,7 +104,7 @@ public class DataSource extends Observable
 	public void addAttendance(File inFile, Date nDate)
 	{
 		notFound.clearStudents();
-		
+		foundStuds = 0;
 		//List to hold info from file
 		ArrayList<List<String>> unparsedStud = new ArrayList<>();
 	
